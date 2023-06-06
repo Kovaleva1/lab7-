@@ -1,21 +1,15 @@
 package commands;
+
 import exceptions.WrongCommandArgsException;
 import exceptions.WrongCredentialsException;
-import models.User;
 import managers.AuthManager;
+import models.User;
 
 public class Auth extends ServerCommand {
     private AuthManager authManager = new AuthManager();
+
     public Auth() {
         super("auth", "производит вход пользователя", false, false);
-    }
-
-    public AuthManager getAuthManager() {
-        return authManager;
-    }
-
-    public void setAuthManager(AuthManager authManager) {
-        this.authManager = authManager;
     }
 
     @Override
@@ -33,12 +27,12 @@ public class Auth extends ServerCommand {
         try {
             validateArgs(args);
             User user = new User(args[0], args[1]);
-            boolean success = authManager.auth(user);;
+            boolean success = authManager.auth(user);
+            ;
             if (success) {
                 this.user = user;
                 console.write("Вы вошли в свой аккаунт");
-            }
-            else {
+            } else {
                 console.write("Не получилось войти");
             }
 

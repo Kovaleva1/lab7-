@@ -2,22 +2,15 @@ package commands;
 
 import exceptions.NonUniqueLoginException;
 import exceptions.WrongCommandArgsException;
-import models.User;
 import managers.AuthManager;
+import models.User;
 
 public class Register extends ServerCommand {
     private AuthManager authManager = new AuthManager();
+
     public Register() {
         super("register", "производит регистрацию пользователя",
                 false, false);
-    }
-
-    public AuthManager getAuthManager() {
-        return authManager;
-    }
-
-    public void setAuthManager(AuthManager authManager) {
-        this.authManager = authManager;
     }
 
     @Override
@@ -39,8 +32,7 @@ public class Register extends ServerCommand {
             if (success) {
                 this.user = user;
                 console.write("Регистрация прошла успешно");
-            }
-            else {
+            } else {
                 console.write("Не получилось зарегистрироваться");
             }
         } catch (WrongCommandArgsException e) {

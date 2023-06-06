@@ -9,14 +9,6 @@ public class Logout extends ServerCommand {
                 false, true);
     }
 
-    public AuthManager getAuthManager() {
-        return authManager;
-    }
-
-    public void setAuthManager(AuthManager authManager) {
-        this.authManager = authManager;
-    }
-
     @Override
     public void validateArgs(String[] args) throws WrongCommandArgsException {
         if (args.length != 0) {

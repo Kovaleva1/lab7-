@@ -8,10 +8,6 @@ import models.MusicBand;
 
 import java.sql.SQLException;
 
-/**
- * Команда remove_by_id id.
- * Удаляет работника по id из коллекции.
- */
 public class Remove extends ServerCommand {
 
     public Remove() {
@@ -44,7 +40,7 @@ public class Remove extends ServerCommand {
             }
             //удаляем в коллекции
             collectionManager.remove(Integer.parseInt(args[0]));
-
+            console.write("Удаление прошло успешно");
         } catch (WrongCommandArgsException | NonExistentId | UnavailableModelException e) {
             console.write(e.toString());
         } catch (SQLException e) {

@@ -36,6 +36,7 @@ public class ExecuteScript extends ServerCommand {
             depth++;
             Console fileConsole = new FileConsole(fileName);
             InputManager newInputManager = new InputManager(collectionManager, fileConsole);
+            newInputManager.setUser(user);
             newInputManager.run();
             depth--;
         } catch (WrongCommandArgsException e) {

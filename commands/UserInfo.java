@@ -1,18 +1,12 @@
 package commands;
 
 import exceptions.WrongCommandArgsException;
-import models.User;
 
 public class UserInfo extends ServerCommand{
-    private User user;
 
     public UserInfo() {
         super("user_info", "выводит информацию о текущем пользователе",
                 false, false);
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 
     @Override

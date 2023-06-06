@@ -12,7 +12,7 @@ import java.sql.SQLException;
 public class Update extends ServerCommand {
 
     public Update() {
-        super("update", "обновляет музыкальную группу по id на основе заданной музыкальной группе",
+        super("update", "обновляет музыкальную группу по id на основе заданной музыкальной группу",
                 true, true);
     }
 

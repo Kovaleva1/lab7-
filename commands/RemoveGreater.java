@@ -7,10 +7,6 @@ import models.MusicBand;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
-/**
- * Команда remove_greater.
- * Удаляет работников, которые больше заданного.
- */
 public class RemoveGreater extends ServerCommand {
 
     public RemoveGreater() {
