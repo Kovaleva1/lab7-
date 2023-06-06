@@ -18,7 +18,4 @@ public class StringConsole implements Console {
         res += text + "\n";
     }
 
-    public String getAllText() {
-        return res.strip();
-    }
 }
