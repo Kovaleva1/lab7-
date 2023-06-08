@@ -23,8 +23,9 @@ public class MusicBand implements Comparable<MusicBand> {
         this.genre = genre;
         this.label = label;
     }
+
     public MusicBand(Integer id, String name, Coordinates coordinates, LocalDateTime creationDate, Integer numberOfParticipants, Integer singleCount, MusicGenre genre, Label label) {
-        this.id=id;
+        this.id = id;
         this.name = name;
         this.coordinates = coordinates;
         this.creationDate = creationDate;
@@ -86,11 +87,6 @@ public class MusicBand implements Comparable<MusicBand> {
     public Integer getSingleCount() {
         return singleCount;
     }
-
-    public void setGenre(MusicGenre genre) {
-        this.genre = genre;
-    }
-
     public void setLabel(Label label) {
         this.label = label;
     }

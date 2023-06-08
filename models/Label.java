@@ -5,7 +5,6 @@ public class Label {
     private int creatorId;
 
 
-
     public Label(int sales) {
         this.sales = sales;
     }
@@ -27,7 +26,7 @@ public class Label {
     }
 
 
-    public  boolean validate() {
+    public boolean validate() {
         if (sales <= 0) {
             return false;
         }
