@@ -4,7 +4,6 @@ import exceptions.NonExistentId;
 import exceptions.UnavailableModelException;
 import exceptions.WrongCommandArgsException;
 import models.MusicBand;
-import models.UserRole;
 
 import java.io.Serializable;
 
@@ -17,7 +16,6 @@ public abstract class AbstractCommand implements Serializable {
     protected MusicBand musicband;
 
     protected boolean onlyUsers = true;  //команду могут выполнять только зарегистрированные пользователи
-    protected UserRole minUserRole = UserRole.USER_MIN;
 
     public AbstractCommand(String name, String description, boolean withMusicband, boolean onlyUsers) {
         this.name = name;
@@ -28,10 +26,6 @@ public abstract class AbstractCommand implements Serializable {
 
     public String getName() {
         return name;
-    }
-
-    public String getDescription() {
-        return description;
     }
 
     public String[] getArgs() {
@@ -46,28 +40,12 @@ public abstract class AbstractCommand implements Serializable {
         return withMusicband;
     }
 
-    public void setWithMusicband(boolean withMusicband) {
-        this.withMusicband = withMusicband;
-    }
-
-    public MusicBand getMusicBand() {
-        return musicband;
-    }
-
     public void setMusicBand(MusicBand musicBand) {
         this.musicband = musicBand;
     }
 
     public boolean isOnlyUsers() {
         return onlyUsers;
-    }
-
-    public UserRole getMinUserRole() {
-        return minUserRole;
-    }
-
-    public void setMinUserRole(UserRole minUserRole) {
-        this.minUserRole = minUserRole;
     }
 
     public abstract void validateArgs(String[] args) throws WrongCommandArgsException,

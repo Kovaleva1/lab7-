@@ -2,7 +2,7 @@ package commands;
 
 import exceptions.WrongCommandArgsException;
 
-public class UserInfo extends ServerCommand{
+public class UserInfo extends ServerCommand {
 
     public UserInfo() {
         super("user_info", "выводит информацию о текущем пользователе",
@@ -22,8 +22,7 @@ public class UserInfo extends ServerCommand{
             validateArgs(args);
             if (user == null) {
                 console.write("Вы не вошли в аккаунт");
-            }
-            else {
+            } else {
                 console.write(user.toString());
             }
         } catch (WrongCommandArgsException e) {

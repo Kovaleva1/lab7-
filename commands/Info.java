@@ -1,6 +1,7 @@
 package commands;
 
 import exceptions.WrongCommandArgsException;
+
 public class Info extends ServerCommand {
 
     public Info() {

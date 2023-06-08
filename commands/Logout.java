@@ -1,9 +1,11 @@
 package commands;
+
 import exceptions.WrongCommandArgsException;
 import managers.AuthManager;
 
 public class Logout extends ServerCommand {
     private AuthManager authManager = new AuthManager();
+
     public Logout() {
         super("logout", "выходит из аккаунта",
                 false, true);

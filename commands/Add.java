@@ -6,10 +6,6 @@ import exceptions.WrongModelsException;
 
 import java.sql.SQLException;
 
-/**
- * Команда add.
- * Добавляет работника в коллекцию.
- */
 public class Add extends ServerCommand {
 
     public Add() {
