@@ -2,9 +2,9 @@ package consoles;
 
 public interface Console {
 
-    public boolean hasNext();
+    boolean hasNext();
 
-    public String getNextStr();
+    String getNextStr();
 
-    public void write(String text);
+    void write(String text);
 }
