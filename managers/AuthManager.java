@@ -1,11 +1,11 @@
 package managers;
+
+import database.ConnectionManager;
+import database.UserDatabaseManager;
 import loggers.Logger;
 import loggers.StandardLogger;
 import models.User;
-import models.UserRole;
 import server.Configuration;
-import database.ConnectionManager;
-import database.UserDatabaseManager;
 
 import java.sql.SQLException;
 
@@ -16,9 +16,6 @@ public class AuthManager {
 
     /**
      * Проверяет, есть ли пользователь с таким именем
-     *
-     * @param name - имя пользователя, которое проверяем
-     * @return - true - есть, false - нет
      */
     public boolean checkUserName(String name) {
         return databaseManager.checkUserName(name);
@@ -27,10 +24,6 @@ public class AuthManager {
 
     /**
      * Проверяет, есть ли пользователь с таким именем и паролем
-     *
-     * @param name     - имя пользователя, которое проверяем
-     * @param password - пароль пользователя, который проверяем
-     * @return - true - есть (авторизация прошла успешно), false - нет
      */
     public boolean checkUserPass(String name, String password) {
         return databaseManager.checkUserPass(name, password);
@@ -57,9 +50,7 @@ public class AuthManager {
             if (databaseManager.checkUserPass(user.getName(), user.getPassword())) {
                 //вход успешный
                 int id = databaseManager.getUserId(user.getName());
-                UserRole role = databaseManager.getUserRole(user.getName());
                 user.setId(id);
-                user.setRole(role);
                 logger.write("Вход прошёл успешно");
                 return true;
             }

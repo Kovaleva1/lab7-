@@ -1,15 +1,12 @@
 package managers;
 
-import commands.Command;
 import consoles.Console;
 import consoles.StandardConsole;
 import exceptions.EndInputException;
-import exceptions.EndInputWorkerException;
+import exceptions.EndInputMBException;
 import exceptions.NoSuchCommandException;
 import models.*;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeParseException;
 import java.util.NoSuchElementException;
 
 /**
@@ -25,6 +22,7 @@ public class InputManager {
     public InputManager(CollectionManager collectionManager) {
         this.collectionManager = collectionManager;
     }
+
     public InputManager(CollectionManager collectionManager, Console console) {
         this.collectionManager = collectionManager;
         this.console = console;
@@ -46,14 +44,14 @@ public class InputManager {
         return collectionManager;
     }
 
-    public Integer getInteger(String text, boolean positive) throws EndInputException, EndInputWorkerException {
+    public Integer getInteger(String text, boolean positive) throws EndInputException, EndInputMBException {
         String tmp = ""; //временное хранение ввода
         Integer x;
         console.write(text);
         while (console.hasNext()) {
             tmp = console.getNextStr();
             if (tmp.equals(stopMusicBand)) {
-                throw new EndInputWorkerException();
+                throw new EndInputMBException();
             }
             if (ValidateManager.isInteger(tmp)) {
                 x = Integer.parseInt(tmp);
@@ -66,30 +64,7 @@ public class InputManager {
         throw new EndInputException();
     }
 
-    public Float getFloat(String text, boolean notNull, boolean positive) throws EndInputException, EndInputWorkerException {
-        String tmp = ""; //временное хранение ввода
-        Float x;
-        console.write(text);
-        while (console.hasNext()) {
-            tmp = console.getNextStr();
-            if (tmp.equals(stopMusicBand)) {
-                throw new EndInputWorkerException();
-            }
-            if (tmp.equals("") && !notNull) {
-                return null;
-            }
-            if (ValidateManager.isFloat(tmp)) {
-                x = Float.parseFloat(tmp);
-                if (x > 0 || (x <= 0 && !positive)) {
-                    return x;
-                }
-            }
-            console.write(text);
-        }
-        throw new EndInputException();
-    }
-
-    public MusicGenre getGenre() throws EndInputException, EndInputWorkerException {
+    public MusicGenre getGenre() throws EndInputException, EndInputMBException {
         String text = "Введите жанр музыкальной группы или пустую строку для null. Варианты: ";
         for (MusicGenre el : MusicGenre.values()) {
             text += el + " ";
@@ -100,7 +75,7 @@ public class InputManager {
         while (console.hasNext()) {
             tmp = console.getNextStr();
             if (tmp.equals(stopMusicBand)) {
-                throw new EndInputWorkerException();
+                throw new EndInputMBException();
             }
             if (tmp.equals("")) {
                 return null;
@@ -114,33 +89,13 @@ public class InputManager {
         throw new EndInputException();
     }
 
-    public LocalDate getDate(String text) throws EndInputException, EndInputWorkerException {
+    public String getNotBlankString(String text, int minLength, boolean notNull) throws EndInputException, EndInputMBException {
         String tmp = ""; //временное хранение ввода
         console.write(text);
         while (console.hasNext()) {
             tmp = console.getNextStr();
             if (tmp.equals(stopMusicBand)) {
-                throw new EndInputWorkerException();
-            }
-            if (tmp.equals("")) {
-                return null;
-            }
-            try {
-                return LocalDate.parse(tmp);
-            } catch (DateTimeParseException e) {
-                console.write(text);
-            }
-        }
-        throw new EndInputException();
-    }
-
-    public String getNotBlankString(String text, int minLength, boolean notNull) throws EndInputException, EndInputWorkerException {
-        String tmp = ""; //временное хранение ввода
-        console.write(text);
-        while (console.hasNext()) {
-            tmp = console.getNextStr();
-            if (tmp.equals(stopMusicBand)) {
-                throw new EndInputWorkerException();
+                throw new EndInputMBException();
             }
             if (!notNull && tmp.equals("")) {
                 return null;
@@ -175,14 +130,13 @@ public class InputManager {
 
             Label label = new Label(sales);
 
-            return new MusicBand(name, new Coordinates(Integer.valueOf(x), Integer.valueOf(y)), numberofPartisipants, singleCount,genre, label);
-        } catch (EndInputException | EndInputWorkerException e) {
+            return new MusicBand(name, new Coordinates(Integer.valueOf(x), Integer.valueOf(y)), numberofPartisipants, singleCount, genre, label);
+        } catch (EndInputException | EndInputMBException e) {
             return null;
         }
     }
 
     public void run() {
-        Command command;
         CommandManager commandManager = new CommandManager(this, collectionManager);
         while (console.hasNext()) {
             String text = "Введите команду (help - чтобы узнать команды):";

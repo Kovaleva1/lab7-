@@ -145,15 +145,6 @@ public class BlockingCollectionManager extends CollectionManager {
         }
     }
 
-    public LinkedList<MusicBand> getFilterByNumberoFParticipants(int participants) {
-        lock.lock();
-        try {
-            return super.getFilterByNumberofParticipants(participants);
-        } finally {
-            lock.unlock();
-        }
-    }
-
     public void sortByName() {
         lock.lock();
         try {

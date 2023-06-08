@@ -4,8 +4,6 @@ package managers;
 import consoles.Console;
 import consoles.StandardConsole;
 import exceptions.NotUniqueIdException;
-import loggers.Logger;
-import loggers.StandardLogger;
 import models.MusicBand;
 
 import java.time.LocalDateTime;
@@ -14,12 +12,8 @@ import java.util.LinkedList;
 import java.util.TreeMap;
 import java.util.stream.Collectors;
 
-/**
- * Класс для работы с коллекцией
- */
 public class CollectionManager {
     private Console console = new StandardConsole();
-    private final Logger logger = new StandardLogger();
     private LinkedList<MusicBand> linkedList;
     private final TreeMap<Integer, MusicBand> idMusicBandFromCollection = new TreeMap<>();
     private final LocalDateTime creationDate;
@@ -132,6 +126,7 @@ public class CollectionManager {
     public MusicBand getMusicBandById(int id) {
         return idMusicBandFromCollection.get(id);
     }
+
     public LinkedList<MusicBand> getFilterByNumberofParticipants(Integer numberofParticipants) {
         return linkedList.stream().filter(musicBand ->
                 (musicBand.getNumberOfParticipants() == null && numberofParticipants == null)
