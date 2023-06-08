@@ -1,11 +1,9 @@
 package database;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-/**
- * Класс, отвечающий за подключение к базе данных.
- */
 public class ConnectionManager {
     private final String url;
     private final String login;
