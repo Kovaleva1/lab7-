@@ -28,7 +28,7 @@ public class CollectionManager {
     }
 
     public void setMusicBands(LinkedList<MusicBand> musicBands) {
-        //оставляем только корректных работников
+        //оставляем только корректные музыкальные группы
         idMusicBandFromCollection.clear();
         linkedList.clear();
         for (MusicBand musicBand : musicBands) {
@@ -46,7 +46,7 @@ public class CollectionManager {
 
     public void update(int id, MusicBand musicBand) {
         if (!idMusicBandFromCollection.containsKey(id)) { //если нет музыкальной группы  с таким id
-            console.write("Нет работника с таким id!");
+            console.write("Нет музыкальных групп с таким id!");
             return;
         }
         MusicBand oldmusicband = idMusicBandFromCollection.get(id);
