@@ -40,7 +40,7 @@ public class Add extends ServerCommand {
             console.write(e.toString());
         } catch (SQLException e) {
             console.write(e.toString());
-            console.write("Добавить работника не получилось");
+            console.write("Добавить музыкальную группу не получилось");
         }
     }
 }

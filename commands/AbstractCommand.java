@@ -12,7 +12,7 @@ public abstract class AbstractCommand implements Serializable {
     protected String description; //описание команды
 
     protected String[] args;  //аргументы при запуске команды
-    protected boolean withMusicband = false;  //нужен ли экземпляр работника для выполнения команды
+    protected boolean withMusicband = false;  //нужен ли экземпляр музыкальной для выполнения команды
     protected MusicBand musicband;
 
     protected boolean onlyUsers = true;  //команду могут выполнять только зарегистрированные пользователи
